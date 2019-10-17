@@ -1,24 +1,17 @@
 'use strict';
 
 (function () {
-  var INTERVAL = 100;
-
   let addListenersForCheckboxes = function (checkboxes) {
     checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('keydown', window.debounce(
-        function (evt) {
+      checkbox.addEventListener('keydown', function (evt) {
           if (evt.key === window.constants.Key.SPACEBAR) {
             evt.preventDefault();
-            changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.modal__checkbox-indicator'));
+            changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.form__checkbox-indicator'));
           }
-        },
-        INTERVAL));
-      checkbox.addEventListener('click', window.debounce(
-        function () {
-          changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.modal__checkbox-indicator'));
-        },
-        INTERVAL
-      ));
+        });
+      checkbox.addEventListener('click', function () {
+          changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.form__checkbox-indicator'));
+        });
     });
   };
 
@@ -27,19 +20,19 @@
       case 'true':
         checkbox.setAttribute('aria-checked', 'false');
         input.removeAttribute('checked');
-        indicator.classList.remove('modal__checkbox-indicator--selected');
+        indicator.classList.remove('form__checkbox-indicator--selected');
         break;
       case 'false':
         checkbox.setAttribute('aria-checked', 'true');
         input.setAttribute('checked', 'checked');
-        indicator.classList.add('modal__checkbox-indicator--selected');
+        indicator.classList.add('form__checkbox-indicator--selected');
         break;
     }
   };
 
   window.checkbox = {
     setCheckboxes: function () {
-      let elsCheckboxes = document.querySelectorAll('.modal__checkbox');
+      let elsCheckboxes = document.querySelectorAll('.form__checkbox');
       addListenersForCheckboxes(elsCheckboxes);
     }
   };
