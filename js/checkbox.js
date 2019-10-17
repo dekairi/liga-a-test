@@ -3,15 +3,15 @@
 (function () {
   let addListenersForCheckboxes = function (checkboxes) {
     checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('keydown', function (evt) {
-          if (evt.key === window.constants.Key.SPACEBAR) {
-            evt.preventDefault();
-            changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.form__checkbox-indicator'));
-          }
-        });
-      checkbox.addEventListener('click', function () {
+      checkbox.addEventListener('keydown', window.debounce(function (evt) {
+        if (evt.key === window.constants.Key.SPACEBAR) {
+          evt.preventDefault();
           changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.form__checkbox-indicator'));
-        });
+        }
+      }));
+      checkbox.addEventListener('click', window.debounce(function () {
+        changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.form__checkbox-indicator'));
+      }));
     });
   };
 

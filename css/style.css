@@ -1159,7 +1159,7 @@ input[type="radio"].visually-hidden {
 .form__label {
   display: inline-block;
   vertical-align: top;
-  max-width: 330px;
+  max-width: 350px;
   padding-left: 45px;
   font-family: "PT Mono", "Arial", sans-serif;
   font-weight: 400;
@@ -1185,7 +1185,8 @@ input[type="radio"].visually-hidden {
     left: 0;
     width: 16px;
     height: 16px;
-    border: 1px solid #FFFFFF; }
+    border: 1px solid #FFFFFF;
+    cursor: pointer; }
   .form__checkbox-indicator--selected::before {
     background-image: url("../img/tick.svg");
     background-repeat: no-repeat;
